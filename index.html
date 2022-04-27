@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Dashboard - pragma.money</title>
+<link rel="shortcut icon" type="image/png" href="assets/p-fantom.png" />
+<meta property="og:title" content="Dashboard - pragma.money" />
+<meta name="twitter:title" content="Dashboard - pragma.money" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><meta property="og:image" content="OG_IMG">
+<link rel="icon" type="image/x-icon" href="assets/p-fantom.png">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="css/main.css" rel="stylesheet">
+<link rel="stylesheet" as="font" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@100;300;400;500;600;800&family=Chakra+Petch:wght@300&family=Chakra+Petch:wght@300&family=Material+Icons&display=swap" />
+</head>
+<body data-controller="home-dashboard" class="min-h-screen flex flex-col justify-between">
+
+<header class="navbar sticky top-0 z-50 bg-base-100 px-4">
+<div class="navbar-start">
+<img src="assets/p-fantom.png" alt="Pragma" class="w-16">
+</div>
+<div class="navbar-end">
+<label for="my-drawer-2" class="btn btn-sm btn-primary drawer-button lg:hidden mr-2">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+</svg>
+</label>
+<span data-home-dashboard-target="wallet" class="mr-5"></span>
+<button class="btn btn-primary btn-sm" data-home-dashboard-target="connect" data-action="click->home-dashboard#connectWallet">Connect Wallet</button>
+<button class="btn btn-primary btn-sm hidden" data-home-dashboard-target="disconnect" data-action="click->home-dashboard#disconnectWallet">Disconnect Wallet</button>
+</div>
+</header>
+<div class="md:flex">
+<nav class="absolute w-full md:w-80 drawer drawer-mobile md:w-1/4 md:relative">
+<input id="my-drawer-2" type="checkbox" class="drawer-toggle">
+<div class="drawer-side">
+<label for="my-drawer-2" class="drawer-overlay"></label>
+<ul class="menu p-4 overflow-y-auto w-full md:w-80 bg-base-100 text-base-content">
+
+
+<li>
+<a href="https://dexscreener.com/fantom/0x0a6a3317b72a37aba0130d4cd810b6db74a27129" target="_blank">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+</svg>
+Chart
+</a>
+</li>
+<li>
+<a href="https://pragma.money/bogged" target="_blank">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+</svg>
+Swap
+</a>
+</li>
+<li>
+<a href="#" data-action="click->home-dashboard#addToken">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd" />
+</svg>
+Add Token to Wallet
+</a>
+</li>
+<li>
+<a href="https://docs.pragma.money" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+</svg>
+Docs
+</a>
+</li>
+<li class="indicator">
+<span class="btn-disabled bg-base-300 indicator-item badge ml-4 badge-sm indicator-end indicator-middle -right-4">soon</span>
+<a class="btn-disabled">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 1a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm4-4a1 1 0 100 2h.01a1 1 0 100-2H13zM9 9a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM7 8a1 1 0 000 2h.01a1 1 0 000-2H7z" clip-rule="evenodd" />
+</svg>
+Calculator
+</a>
+</li>
+<li class="p-4 flex socialmedia-icons">
+<div class="flex gap-8">
+<a href="https://discord.com/invite/pragma-money" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall" focusable="false" aria-hidden="true">
+<path d="M17.2286 4.63925C15.4971 3.24782 12.7593 3.01211 12.6436 3.00211C12.4607 2.98639 12.2871 3.08997 12.2121 3.25711C12.2093 3.26282 12.0564 3.70639 11.9086 4.13425C13.9207 4.48639 15.2879 5.26782 15.3607 5.31068C15.7021 5.50925 15.8164 5.94711 15.6171 6.28782C15.485 6.51496 15.2457 6.64211 15 6.64211C14.8779 6.64211 14.755 6.61139 14.6421 6.54568C14.6221 6.53354 12.6164 5.39211 10.0014 5.39211C7.38571 5.39211 5.37929 6.53425 5.35929 6.54568C5.01857 6.74354 4.58143 6.62711 4.38357 6.28568C4.18571 5.94568 4.30071 5.50925 4.64071 5.31068C4.71357 5.26782 6.08571 4.48354 8.10357 4.13211C7.94786 3.69925 7.79071 3.26282 7.78786 3.25711C7.71286 3.08925 7.53929 2.98354 7.35643 3.00211C7.24071 3.01139 4.50286 3.24711 2.74857 4.65782C1.83143 5.50497 0 10.4578 0 14.74C0 14.8157 0.0192857 14.8893 0.0571429 14.955C1.32214 17.1764 4.77071 17.7578 5.55643 17.7828C5.56143 17.7835 5.56571 17.7835 5.57 17.7835C5.70857 17.7835 5.83929 17.7171 5.92143 17.605L6.77143 16.4535C4.90714 16.0043 3.92143 15.2978 3.86214 15.2542C3.545 15.0207 3.47643 14.5735 3.71 14.2557C3.94286 13.9393 4.38857 13.8693 4.70571 14.1014C4.73214 14.1185 6.55143 15.3921 10 15.3921C13.4621 15.3921 15.2764 14.1135 15.2943 14.1007C15.6114 13.8707 16.0586 13.94 16.2907 14.2585C16.5221 14.5757 16.455 15.02 16.1393 15.2528C16.08 15.2964 15.0993 16.0014 13.2393 16.4507L14.0786 17.6042C14.1607 17.7171 14.2914 17.7828 14.43 17.7828C14.435 17.7828 14.4393 17.7828 14.4436 17.7821C15.23 17.7571 18.6786 17.1757 19.9429 14.9542C19.9807 14.8885 20 14.815 20 14.7393C20 10.4578 18.1686 5.50497 17.2286 4.63925ZM7.14286 13.2493C6.35357 13.2493 5.71429 12.45 5.71429 11.4635C5.71429 10.4771 6.35357 9.67782 7.14286 9.67782C7.93214 9.67782 8.57143 10.4771 8.57143 11.4635C8.57143 12.45 7.93214 13.2493 7.14286 13.2493ZM12.8571 13.2493C12.0679 13.2493 11.4286 12.45 11.4286 11.4635C11.4286 10.4771 12.0679 9.67782 12.8571 9.67782C13.6464 9.67782 14.2857 10.4771 14.2857 11.4635C14.2857 12.45 13.6464 13.2493 12.8571 13.2493Z">
+</path>
+</svg></a>
+<a href="https://t.me/+YTtLr38t-ZUwODMx" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall" focusable="false" aria-hidden="true">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.47833 0 0 4.47667 0 10C0 15.5225 4.47833 20 10 20C15.5225 20 20 15.5225 20 10C20 4.47667 15.5225 0 10 0ZM12.6867 14.8925C12.8433 15.0033 13.045 15.0308 13.225 14.9633C13.4042 14.895 13.5367 14.7408 13.5767 14.5542C13.9992 12.5692 15.0242 7.54417 15.4083 5.73917C15.4375 5.6025 15.3892 5.46083 15.2825 5.37C15.175 5.27917 15.0267 5.25333 14.895 5.30167C12.8567 6.05667 6.57917 8.41167 4.01333 9.36083C3.85083 9.42167 3.745 9.5775 3.75 9.75C3.75583 9.92167 3.87167 10.0708 4.03833 10.1208C5.18917 10.465 6.69917 10.9442 6.69917 10.9442C6.69917 10.9442 7.405 13.0758 7.7725 14.1592C7.81917 14.2958 7.92583 14.4025 8.06583 14.4392C8.20667 14.4758 8.35583 14.4375 8.46083 14.3383C9.05167 13.7808 9.965 12.9183 9.965 12.9183C9.965 12.9183 11.7017 14.1908 12.6867 14.8925V14.8925ZM7.33417 10.6742L8.15083 13.3667L8.3325 11.6617C8.3325 11.6617 11.485 8.8175 13.2833 7.19667C13.3358 7.14917 13.3425 7.06917 13.2992 7.01333C13.2558 6.9575 13.1758 6.94417 13.1167 6.9825C11.0333 8.3125 7.33417 10.6742 7.33417 10.6742V10.6742Z">
+</path>
+</svg></a>
+<a href="https://medium.com/@Pragma.money" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall" focusable="false" aria-hidden="true">
+<path d="M18.1818 0H1.81818C0.813636 0 0 0.813636 0 1.81818V18.1818C0 19.1864 0.813636 20 1.81818 20H18.1818C19.1864 20 20 19.1864 20 18.1818V1.81818C20 0.813636 19.1864 0 18.1818 0ZM16.8564 15.4545H11.4645V15.1518L12.7273 14.0409V7.7L9.62636 15.4545H9.14182L5.68182 7.63909V13.1727L7.26364 15.1518V15.4545H3.14364V15.1518L4.77909 13.1727V6.58909L3.32545 4.77182C3.32545 4.77182 3.32545 4.50909 3.32545 4.55H7.30364L10.3936 11.2345L13.0591 4.55H16.8355V4.77182L15.4545 5.93273V14.0409L16.8564 15.1518V15.4545Z">
+</path>
+</svg></a>
+<a href="https://twitter.com/pragma_money" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg" class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeSmall" focusable="false" aria-hidden="true">
+<path d="M20 3.92377C19.2639 4.25068 18.4731 4.47067 17.6432 4.5699C18.4908 4.06223 19.1408 3.25841 19.4469 2.29999C18.6547 2.76997 17.7762 3.1115 16.8409 3.2961C16.0925 2.49844 15.0263 2 13.8464 2C11.5803 2 9.74347 3.83762 9.74347 6.10292C9.74347 6.42445 9.78039 6.73828 9.84962 7.0375C6.43975 6.86674 3.41679 5.23295 1.39225 2.74997C1.03996 3.3561 0.83766 4.06069 0.83766 4.81374C0.83766 6.23676 1.56148 7.49287 2.66221 8.22822C1.98992 8.20669 1.35687 8.02208 0.803815 7.71517C0.803815 7.73286 0.803815 7.74901 0.803815 7.7667C0.803815 9.75509 2.21761 11.4135 4.09523 11.7896C3.75139 11.8835 3.38833 11.9335 3.01373 11.9335C2.74989 11.9335 2.49221 11.9073 2.24222 11.8604C2.76451 13.4903 4.27984 14.6772 6.07515 14.7103C4.67136 15.811 2.9022 16.4671 0.979193 16.4671C0.648437 16.4671 0.321526 16.4479 0 16.4094C1.81608 17.5733 3.97216 18.2525 6.28976 18.2525C13.8372 18.2525 17.9632 12.0004 17.9632 6.57829C17.9632 6.4006 17.9593 6.22368 17.9516 6.04754C18.7539 5.46833 19.45 4.74605 20 3.92377Z">
+</path>
+</svg></a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<section class="info-content md:w-3/4 md:mr-4">
+
+<div data-home-dashboard-target='alertHome' class="alert alert-info shadow-lg mb-8">
+<div>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<span>Safety Alert: always check if you are at pragma.money</span>
+</div>
+</div>
+<div class="top-info-content rounded-sm p-8 bg-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+<div>
+<p class="text-secondary">Market Cap</p>
+<p class="text-2xl font-bold" data-home-dashboard-target="marketCap">loading...</p>
+</div>
+<div>
+<p class="text-secondary">Daily ROI</p>
+<p class="text-2xl font-bold">2.14%</p>
+</div>
+<div>
+<p class="text-secondary">Circulating Supply</p>
+<p class="text-2xl font-bold" data-home-dashboard-target="supply">loading...</p>
+</div>
+</div>
+<div class="bottom-info-content rounded-sm p-8 bg-gray-800 grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+<div>
+<p class="text-secondary">Your balance</p>
+<p class="text-4xl text-success font-bold" data-home-dashboard-target="balance"></p>
+<p class="text-sm mt-1" data-home-dashboard-target="pragmaBalance"></p>
+</div>
+<div>
+<p class="text-secondary">Next reward</p>
+<p class="text-4xl font-bold" data-home-dashboard-target="next"></p>
+<p class="text-sm mt-1" data-home-dashboard-target="pragmaNext"></p>
+</div>
+<div>
+<p class="text-secondary">Daily reward</p>
+<p class="text-4xl font-bold" data-home-dashboard-target="daily"></p>
+<p class="text-sm mt-1" data-home-dashboard-target="pragmaDaily"></p>
+</div>
+<div>
+<p class="text-secondary">5 Days reward</p>
+<p class="text-4xl font-bold" data-home-dashboard-target="fiveDays"></p>
+<p class="text-sm mt-1" data-home-dashboard-target="pragmaFiveDays"></p>
+</div>
+</div>
+<div class="bottom-info-content mt-8 grid grid-cols-2 gap-4">
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">PRAGMA Price</p>
+<p class="text-3xl font-bold" data-home-dashboard-target="price">loading...</p>
+</div>
+<span class="text-white-500 text-sm" data-home-dashboard-target="priceChange">loading...</span>
+</div>
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">Next Rebase</p>
+<span class="countdown text-3xl font-bold">
+<span data-home-dashboard-target="minutes" style="--value:00;"></span>
+</span> minutes
+<span class="countdown text-3xl font-bold">
+<span data-home-dashboard-target="seconds" style="--value:00;"></span>
+</span> sec
+</div>
+</div>
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">Treasury value</p>
+<p class="text-3xl font-bold" data-home-dashboard-target="treasuryBalance">loading...</p>
+</div>
+</div>
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">Risk Free Value</p>
+<p class="text-3xl font-bold" data-home-dashboard-target="rfvBalance">loading...</p>
+</div>
+</div>
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">FTM Liquidity value</p>
+<p class="text-3xl font-bold" data-home-dashboard-target="liquidityBalance">loading...</p>
+</div>
+</div>
+<div class="price rounded-sm p-8 bg-gray-800 flex justify-between">
+<div>
+<p class="text-secondary">Total Burned PRAGMA 🔥</p>
+<p class="text-3xl font-bold" data-home-dashboard-target="burntBalance">loading...</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="flex-col hidden">
+</div>
+<script src="./src/web3modal.js"></script>
+<script src="https://unpkg.com/@walletconnect/web3-provider@1.7.5/dist/umd/index.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="module" src="./src/App.js"></script>
+</body>
+</html>
